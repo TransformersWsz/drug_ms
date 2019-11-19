@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="icon" href="/img/ny.ico" type="image/x-icon">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/signin.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body class="text-center">
+    <div class="form-signin">
+        <img class="mb-4" src="/img/logo.svg" alt="" width="150" height="150">
+        <p></p>
+        <label for="name" class="sr-only">Email address</label>
+        <input type="text" id="name" class="form-control" placeholder="用户名" required autofocus>
+        <label for="passwd" class="sr-only">Password</label>
+        <input type="password" id="passwd" class="form-control" placeholder="密码" required>
+
+        <br />
+        <div class="btn btn-lg btn-primary btn-block" id="login_submit">登录</div>
+        <br />
+        <p class="mt-5 mb-3 text-muted">&copy; 南邮医药管理系统 2019 ~ </p>
+    </div>
+</body>
+<script>
+    $("#login_submit").click(function() {
+        var name = $("#name").val();
+        var passwd = $("#passwd").val();
+        var data = {
+            "name": name,
+            "passwd": passwd
+        };
+        $.ajax({
+            type : "POST",
+            url : "/session",
+            data : data,
+            success : function(result) {
+                if (result.result == 1) {
+                    window.location.href = "/index.html";
+                }
+                else {
+                    window.alert("用户名或密码错误，请重试！")
+                }
+            }
+        });
+    });
+</script>
+</html>

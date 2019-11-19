@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>药品管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" href="/img/ny.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/css/_all-skins.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="/index.html" class="logo">
+                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-lg"><b>Admin</b></span>
+            </a>
+
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="/login.html" class="dropdown-toggle">
+                                <span class="hidden-xs">退出登录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>管理员</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                    </div>
+                </div>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="active treeview">
+                        <a href="/index.html">
+                            <i class="fa fa-dashboard"></i> <span>药品管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/record.html">
+                            <i class="fa fa-th"></i> <span>取药记录</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    药品管理
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div id="toolbar" class="btn-group">
+                    <button class="btn btn-default" data-toggle="modal" data-target="#drugwindow">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加新药品
+                    </button>
+
+                    <!--新药品窗口-->
+                    <div class="modal fade" id="drugwindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">添加新药品</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="id">药品编号</label>
+                                        <input type="text" class="form-control" id="id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">名称</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="expiry_date">有效期</label>
+                                        <div class="input-group date form_date col-md-5" id="time1" data-date="" data-date-format="dd MM yyyy" data-link-field="expiry_date"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </span>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        </div>
+                                        <input type="hidden" id="expiry_date" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">价格</label>
+                                        <input type="text" class="form-control" id="price">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="production_date">生产日期</label>
+                                        <div class="input-group date form_date col-md-5" id="time2" data-date="" data-date-format="dd MM yyyy" data-link-field="production_date"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </span>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        </div>
+                                        <input type="hidden" id="production_date" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="num">库存</label>
+                                        <input type="text" class="form-control" id="num">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firm">厂商</label>
+                                        <input type="text" class="form-control" id="firm">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="storage_id">库房编号</label>
+                                        <select class="form-control" id="storage_id">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" id="drug_submit">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-default" data-toggle="modal" data-target="#patientwindow">
+                        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>取药
+                    </button>
+
+                    <!--给病人取药-->
+                    <div class="modal fade" id="patientwindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">给病人取药</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="p_name">病人姓名</label>
+                                        <input type="text" class="form-control" id="p_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="state">症状</label>
+                                        <input type="text" class="form-control" id="state">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="drug_id">药品编号</label>
+                                        <select class="form-control" id="drug_id">
+                                            <option value="B20020158">黄地养血口服液</option>
+                                            <option value="H20041902">黄体酮胶囊</option>
+                                            <option value="H20133374">头孢胶囊</option>
+                                            <option value="H46020600">青霉素V钾片</option>
+                                            <option value="Z20093593">麻仁润肠丸</option>
+                                            <option value="Z34020950">黄杨宁片</option>
+                                            <option value="Z42021770">驱风油</option>
+                                            <option value="Z43020999">感冒退热颗粒</option>
+                                            <option value="Z53021104">云南白药气雾剂</option>
+                                            <option value="Z61021434">麻杏止咳糖浆</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="drug_num">药品数量</label>
+                                        <input type="text" class="form-control" id="drug_num">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="purchase_date">购买日期</label>
+                                        <div class="input-group date form_date col-md-5" id="time3" data-date="" data-date-format="dd MM yyyy" data-link-field="purchase_date"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </span>
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        </div>
+                                        <input type="hidden" id="purchase_date" value="" />
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" id="patient_submit">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="table"></table>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+</body>
+
+<!-- jQuery 3 -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-table.min.js"></script>
+<script src="/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="/js/bootstrap-table-toolbar.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/js/adminlte.min.js"></script>
+<script>
+
+    $('#time1').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        minView: 2,
+        format: 'yyyy-mm-dd',
+        forceParse: 0
+    });
+
+    $('#time2').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        minView: 2,
+        format: 'yyyy-mm-dd',
+        forceParse: 0
+    });
+
+    $('#time3').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        minView: 2,
+        format: 'yyyy-mm-dd',
+        forceParse: 0
+    });
+
+    $("#drug_submit").click(function () {
+        var id = $("#id").val();
+        var name = $("#name").val();
+        var expiry_date = $("#expiry_date").val();
+        var price = parseFloat($("#price").val());
+        var production_date = $("#production_date").val();
+        var num = parseInt($("#num").val());
+        var firm = $("#firm").val();
+        var storage_id = parseInt($("#storage_id").val());
+        var data = {
+            "id": id,
+            "name": name,
+            "expiry_date": expiry_date,
+            "price": price,
+            "production_date": production_date,
+            "num": num,
+            "firm": firm,
+            "storage_id": storage_id
+        };
+        $.ajax({
+            type : "POST",
+            url : "/drug",
+            data : data,
+            success : function(result) {
+                window.alert(name + " 药品添加成功");
+                window.location.reload();
+            }
+        });
+    });
+
+    $("#patient_submit").click(function () {
+        var name = $("#p_name").val();
+        var state = $("#state").val();
+        var drug_id = $("#drug_id").val();
+        var drug_num = parseInt($("#drug_num").val());
+        var purchase_date = $("#purchase_date").val();
+        var data = {
+            "name": name,
+            "state": state,
+            "drug_id": drug_id,
+            "drug_num": drug_num,
+            "purchase_date": purchase_date
+        };
+        $.ajax({
+            type : "POST",
+            url : "/patient",
+            data : data,
+            success : function(result) {
+                window.alert("取药成功");
+                window.location.reload();
+            }
+        });
+    });
+
+    var $table = $("#table");
+    $(function () {
+        var otable = new tableinit();
+        otable.init();
+    });
+
+    var tableinit = function () {
+        var otableinit = new Object();
+        otableinit.init = function () {
+            $table.bootstrapTable({
+                showColumns: true, //显示隐藏列    
+                showRefresh: true,  //显示刷新按钮
+                toolbar: '#toolbar',
+                url: "/drug",
+                sidePagination: 'server',
+                method: "get",
+                cache: false,
+                pagination: true,
+                pageSize: 5,
+                pageNumber: 1,
+                pageList: "[5,10,20]",
+                queryParamsType: "limit", //参数格式,发送标准的RESTFul类型的参数请求
+                striped: true,
+                columns: [
+                    {
+                        field: "id",
+                        title: "药品编号"
+                    }, {
+                        field: "name",
+                        title: "名称"
+                    }, {
+                        field: "expiry_date",
+                        title: "有效期"
+                    }, {
+                        field: "price",
+                        title: "价格"
+                    }, {
+                        field: "production_date",
+                        title: "生产日期"
+                    }, {
+                        field: "num",
+                        title: "库存"
+                    }, {
+                        field: "firm",
+                        title: "厂商"
+                    }, {
+                        field: "storage_id",
+                        title: "库房编号"
+                    }]
+            });
+        };
+        return otableinit;
+    };
+</script>
+</html>
